@@ -1,2 +1,2 @@
 [testserver]
-54.173.47.188 ansible_user=ubuntu
+18.208.142.93 ansible_user=centos
