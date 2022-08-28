@@ -1,4 +1,10 @@
 # myapp-ansible1
+**Project Summary**  
+As soon as the developer pushes the updated code on the GIT master branch, a new test server
+will be provisioned with all the required software. After this, the code will be containerized and
+deployed on the test server.
+The deployment will then be built and pushed to the prod server.
+All this should happen automatically and will be triggered from a push to the GitHub master branch.
 
 **goals**
 1. Install and configure puppet agent on the slave node (Job 1)
