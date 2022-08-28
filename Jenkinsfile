@@ -8,13 +8,13 @@ pipeline {
             }
         }
       
-      stage('job1) {
+      stage('job1') {
             steps {
                 ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible2', inventory: 'test.inv', playbook: 'job1.yaml'
                 }
             }
             
-      stage('job2) {
+      stage('job2') {
             steps {
                 ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible2', inventory: 'test.inv', playbook: 'job2.yaml'
                 }
@@ -22,8 +22,8 @@ pipeline {
         
         stage('build') {
             steps {
-               sh 'sudo docker build -t my-app-28082022:$BUILD_NUMBER .'
-               sh 'sudo docker run -d my-app-28082022:$BUILD_NUMBER'
+               sh 'sudo docker build -t myapp-V$BUILD_TIMESTAMP:$BUILD_NUMBER .'
+               sh 'sudo docker run -d myapp-V$BUILD_TIMESTAMP:$BUILD_NUMBER'
             }
         }
         
