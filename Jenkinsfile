@@ -1,35 +1,25 @@
 pipeline {
-  environment {
-    dockerImageName = "gwin300/node-app"
-    dockerImage = ""
-}
-    agent any
+    agent { label 'my_slave'}
 
     stages {
         stage('checkout') {
             steps {
-                git 'https://github.com/G-win300/node_cicd'
+                git branch: 'main', url: 'https://github.com/G-win300/myapp-ansible1'
             }
         }
+      
+      stage('job1) {
+            steps {
+              
+            }
+            }
         
         stage('build') {
             steps {
-                script {
-                    dockerImage = docker.build dockerImageName
-                }
+               sh 'sudo docker build -t my-app-28082022:$BUILD_NUMBER .'
+               sh 'sudo docker run -d my-app-28082022:$BUILD_NUMBER'
             }
         }
         
-        stage('push docker image') {
-            environment {
-                registryCredentials = "docker"
-                        }
-            steps {
-                script {
-                    docker.withRegistry('https://hub.docker.com/repository/docker/gwin300/node-app', registryCredentials)
-                    dockerImage.push("latest")
-                }
-            }
-        }
     }
 }
