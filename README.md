@@ -1,6 +1,6 @@
 # myapp-ansible1
 
-###goals
+**goals
 1. Install and configure puppet agent on the slave node (Job 1)
 2. Push an Ansible configuration on test server to install docker (Job 2)
 3. Pull the PHP website, and the Dockerfile from the git repo and build and deploy your PHP
