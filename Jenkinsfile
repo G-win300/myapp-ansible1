@@ -10,8 +10,14 @@ pipeline {
       
       stage('job1) {
             steps {
-              
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible2', inventory: 'test.inv', playbook: 'job1.yaml'
+                }
             }
+            
+      stage('job2) {
+            steps {
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible2', inventory: 'test.inv', playbook: 'job2.yaml'
+                }
             }
         
         stage('build') {
