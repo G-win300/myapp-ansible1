@@ -10,7 +10,7 @@ pipeline {
       
       stage('job1') {
             steps {
-                ansiblePlaybook credentialsId: 'jenkins-private-key', disableHostKeyChecking: true, installation: 'Ansible2', inventory: 'test.inv', playbook: 'job1.yaml'
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible2', inventory: 'test.inv', playbook: 'job1.yaml'
                 }
             }
             
@@ -22,8 +22,8 @@ pipeline {
         
         stage('job3') {
             steps {
-               sh 'sudo docker build -t myapp-V$BUILD_TIMESTAMP:$BUILD_NUMBER .'
-               sh 'sudo docker run -d myapp-V$BUILD_TIMESTAMP:$BUILD_NUMBER'
+               sh 'sudo docker build -t myapp-v$BUILD_NUMBER .'
+               sh 'sudo docker run -d myapp-v$BUILD_NUMBER'
             }
         }
         
