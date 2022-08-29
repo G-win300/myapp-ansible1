@@ -20,7 +20,7 @@ pipeline {
                 }
             }
         
-        stage('build') {
+        stage('job3') {
             steps {
                sh 'sudo docker build -t myapp-V$BUILD_TIMESTAMP:$BUILD_NUMBER .'
                sh 'sudo docker run -d myapp-V$BUILD_TIMESTAMP:$BUILD_NUMBER'
